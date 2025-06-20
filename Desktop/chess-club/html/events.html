@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Chess Club</title>
+    <link rel="stylesheet" href="../css/event.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="main-nav">
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="#join">Join</a></li>
+                <li><a href="#members">Members</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="events-section">
+            <h1>Upcoming Events</h1>
+            <p style="font-size:1.2rem; color:var(--dark-gray); max-width:700px; margin:0 auto 2.5rem;">
+                Stay up to date with our latest chess tournaments, practice sessions, and club meetings! Use the filters below to find events by type or date.
+            </p>
+            <div class="filter-bar">
+                <select id="typeFilter">
+                    <option value="all">All Types</option>
+                    <option value="tournament">Tournament</option>
+                    <option value="practice">Practice</option>
+                    <option value="meeting">Meeting</option>
+                    <option value="workshop">Workshop</option>
+                </select>
+                <input type="date" id="dateFilter" />
+                <select id="sortFilter">
+                    <option value="soonest">Sort: Soonest First</option>
+                    <option value="latest">Sort: Latest First</option>
+                </select>
+            </div>
+            <div class="events-list" id="eventsList">
+                <!-- Event cards will be rendered here by JS -->
+            </div>
+        </section>
+    </main>
+    <script>
+        // Example event data
+        const events = [
+            {
+                id: 1,
+                type: 'tournament',
+                title: 'Spring Chess Tournament',
+                date: '2024-04-20',
+                location: "Kher/Lin's Room",
+                desc: 'Compete for the club championship! Open to all members. Prizes for top 3.',
+                rsvp: true
+            },
+            {
+                id: 2,
+                type: 'practice',
+                title: 'Weekly Practice Session',
+                date: '2024-04-13',
+                location: "Kher/Lin's Room",
+                desc: 'Sharpen your skills and play friendly games. All levels welcome.',
+                rsvp: false
+            },
+            {
+                id: 3,
+                type: 'meeting',
+                title: 'Club Meeting & Strategy Talk',
+                date: '2024-04-10',
+                location: "Kher/Lin's Room",
+                desc: 'Discuss upcoming events, club news, and learn new chess strategies.',
+                rsvp: false
+            },
+            {
+                id: 4,
+                type: 'workshop',
+                title: 'Chess Tactics Workshop',
+                date: '2024-04-27',
+                location: "Library Room 204",
+                desc: 'Interactive workshop on advanced tactics. Bring your chess set!',
+                rsvp: true
+            },
+            {
+                id: 5,
+                type: 'practice',
+                title: 'Open Practice',
+                date: '2024-04-17',
+                location: "Kher/Lin's Room",
+                desc: 'Drop in for casual games and puzzles.',
+                rsvp: false
+            },
+            {
+                id: 6,
+                type: 'tournament',
+                title: 'Blitz Night',
+                date: '2024-05-03',
+                location: "Cafeteria",
+                desc: 'Fast-paced blitz tournament. 5+0 time control.',
+                rsvp: true
+            }
+        ];
+
+        // Utility for type label
+        const typeLabels = {
+            tournament: "Tournament",
+            practice: "Practice",
+            meeting: "Meeting",
+            workshop: "Workshop"
+        };
+
+        // Render events
+        function renderEvents() {
+            const type = document.getElementById('typeFilter').value;
+            const date = document.getElementById('dateFilter').value;
+            const sort = document.getElementById('sortFilter').value;
+            let filtered = events.slice();
+
+            if (type !== 'all') {
+                filtered = filtered.filter(ev => ev.type === type);
+            }
+            if (date) {
+                filtered = filtered.filter(ev => ev.date === date);
+            }
+            filtered.sort((a, b) => {
+                if (sort === 'soonest') {
+                    return a.date.localeCompare(b.date);
+                } else {
+                    return b.date.localeCompare(a.date);
+                }
+            });
+
+            const list = document.getElementById('eventsList');
+            list.innerHTML = '';
+            if (filtered.length === 0) {
+                list.innerHTML = `<div style="grid-column:1/-1; color:var(--dark-gray); font-size:1.1rem; padding:2rem;">No events found for your filter.</div>`;
+                return;
+            }
+            filtered.forEach(ev => {
+                const card = document.createElement('div');
+                card.className = 'event-card';
+                card.innerHTML = `
+                    <span class="event-type">${typeLabels[ev.type]}</span>
+                    <div class="event-title">${ev.title}</div>
+                    <div class="event-date"><strong>Date:</strong> ${ev.date}</div>
+                    <div class="event-location"><strong>Location:</strong> ${ev.location}</div>
+                    <div class="event-desc">${ev.desc}</div>
+                    ${ev.rsvp ? `<button class="rsvp-btn" onclick="alert('RSVP coming soon!')">RSVP</button>` : ''}
+                `;
+                list.appendChild(card);
+            });
+        }
+
+        document.getElementById('typeFilter').addEventListener('change', renderEvents);
+        document.getElementById('dateFilter').addEventListener('change', renderEvents);
+        document.getElementById('sortFilter').addEventListener('change', renderEvents);
+
+        // Initial render
+        renderEvents();
+    </script>
+</body>
+</html>
