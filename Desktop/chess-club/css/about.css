@@ -125,7 +125,6 @@ body {
     transition: all 0.1s ease;
 }
 
-/* Responsive navigation */
 @media (max-width: 768px) {
     .main-nav ul {
         flex-direction: column;
@@ -144,7 +143,6 @@ body {
     }
 }
 
-/* About page specific styles */
 .about-section {
     max-width: 1200px;
     margin: 0 auto;
@@ -287,8 +285,6 @@ body {
     max-width: 900px;
     margin: 0 auto;
 }
-
-/* Timeline styles */
 .timeline {
     position: relative;
     max-width: 800px;

@@ -13,8 +13,8 @@
                 <li><a href="homepage.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="events.html">Events</a></li>
-                <li><a href="#join">Join</a></li>
-                <li><a href="#members">Members</a></li>
+                <li><a href="join.html">Join</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
             </ul>
         </nav>
     </header>
@@ -39,12 +39,10 @@
                 </select>
             </div>
             <div class="events-list" id="eventsList">
-                <!-- Event cards will be rendered here by JS -->
             </div>
         </section>
     </main>
     <script>
-        // Example event data
         const events = [
             {
                 id: 1,
@@ -101,16 +99,12 @@
                 rsvp: true
             }
         ];
-
-        // Utility for type label
         const typeLabels = {
             tournament: "Tournament",
             practice: "Practice",
             meeting: "Meeting",
             workshop: "Workshop"
         };
-
-        // Render events
         function renderEvents() {
             const type = document.getElementById('typeFilter').value;
             const date = document.getElementById('dateFilter').value;
@@ -156,7 +150,6 @@
         document.getElementById('dateFilter').addEventListener('change', renderEvents);
         document.getElementById('sortFilter').addEventListener('change', renderEvents);
 
-        // Initial render
         renderEvents();
     </script>
 </body>

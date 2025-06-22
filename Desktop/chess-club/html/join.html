@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join - Chess Club</title>
+    <link rel="stylesheet" href="../css/join.css">
+    <style>
+        body {
+            background: var(--white);
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-gray);
+            margin: 0;
+            padding: 0;
+        }
+        .join-section {
+            max-width: 500px;
+            margin: 3rem auto 0 auto;
+            padding: 2.5rem 2rem;
+            background: var(--white);
+            border-radius: 18px;
+            box-shadow: var(--shadow-light);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+        .join-section h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .join-form .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .join-form label {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+            margin-bottom: 0.5rem;
+        }
+        .join-form input[type="text"],
+        .join-form input[type="email"],
+        .join-form input[type="tel"],
+        .join-form textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-gray);
+            background: var(--light-gray);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .join-form input[type="text"]:focus,
+        .join-form input[type="email"]:focus,
+        .join-form input[type="tel"]:focus,
+        .join-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.13);
+        }
+        .join-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .join-form button[type="submit"] {
+            background: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            padding: 0.9rem 1.8rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            box-shadow: var(--shadow-light);
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+        .join-form button[type="submit"]:hover {
+            background: var(--gradient-secondary);
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: var(--shadow-medium);
+        }
+        .join-form button[type="submit"]:active {
+            transform: translateY(0) scale(0.99);
+            box-shadow: var(--shadow-light);
+        }
+        @media (max-width: 600px) {
+            .join-section {
+                padding: 1.2rem 0.5rem;
+            }
+            .join-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="main-nav">
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="join.html">Join</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="join-section">
+        <h2>Registration Form</h2>
+        <form class="join-form" action="https://formspree.io/f/xnnvgney" method="POST" autocomplete="off">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="grade">Grade:</label>
+                <input type="text" id="grade" name="grade" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number (Optional):</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+
+            <div class="form-group">
+                <label for="availability">Availability:</label>
+                <textarea id="availability" name="availability" rows="4"></textarea>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </section>
+</body>
+</html>

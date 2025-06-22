@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Chess Club</title>
+    <link rel="stylesheet" href="../css/gallery.css">
+    <style>       
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="main-nav">
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="join.html">Join</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="gallery-section">
+        <h2>Photo Gallery</h2>
+        <div class="carousel-container">
+            <button class="carousel-btn prev" aria-label="Previous">&#10094;</button>
+            <div class="carousel-slide">
+                <img class="carousel-image" src="../assets/chess1.jpg" alt="Chess Club Event 1">
+                <img class="carousel-image" src="../assets/chess2.jpg" alt="Chess Club Event 2">
+                <img class="carousel-image" src="../assets/chess3.jpg" alt="Chess Club Event 3">
+                <img class="carousel-image" src="../assets/chess4.jpg" alt="Chess Club Event 4">
+                <img class="carousel-image" src="../assets/chess5.jpg" alt="Chess Club Event 5">    
+            </div>
+            <button class="carousel-btn next" aria-label="Next">&#10095;</button>
+        </div>
+        <div class="carousel-dots">
+            <button class="carousel-dot active"></button>
+            <button class="carousel-dot"></button>
+            <button class="carousel-dot"></button>
+            <button class="carousel-dot"></button>
+            <button class="carousel-dot"></button>
+        </div>
+    </section>
+    <script>
+        const slide = document.querySelector('.carousel-slide');
+        const images = document.querySelectorAll('.carousel-image');
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let currentIndex = 0;
+        const total = images.length;
+
+        function updateCarousel(index) {
+            slide.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + total) % total;
+            updateCarousel(currentIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % total;
+            updateCarousel(currentIndex);
+        });
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                currentIndex = i;   
+                updateCarousel(currentIndex);
+            });
+        });
+
+        let autoSlide = setInterval(() => {
+            currentIndex = (currentIndex + 1) % total;
+            updateCarousel(currentIndex);
+        }, 6000);
+
+        document.querySelector('.carousel-container').addEventListener('mouseenter', () => {
+            clearInterval(autoSlide);
+        });
+        document.querySelector('.carousel-container').addEventListener('mouseleave', () => {
+            autoSlide = setInterval(() => {
+                currentIndex = (currentIndex + 1) % total;
+                updateCarousel(currentIndex);
+            }, 6000);
+        });
+    </script>
+</body>
+</html>

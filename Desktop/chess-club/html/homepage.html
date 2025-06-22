@@ -13,8 +13,8 @@
                 <li><a href="homepage.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="events.html">Events</a></li>
-                <li><a href="#join">Join</a></li>
-                <li><a href="#members">Members</a></li>
+                <li><a href="join.html">Join</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
             </ul>
         </nav>
     </header>
@@ -24,8 +24,8 @@
             <h1>Welcome</h1>
             <p>♟️ Join our community ♟️</p>
             <div class="cta-buttons">
-                <button class="join-btn">Join</button>
-                <button class="learn-more-btn">About Us</button>
+                <a href="join.html"><button class="join-btn">Join</button></a>
+                <a href="about.html"><button class="learn-more-btn" >About Us</button></a>
             </div>
         </div>
 
@@ -38,7 +38,19 @@
             <br>
             <p><strong>Time:</strong> NONE</p>
             <br>
-            <button class="rsvp-btn">RSVP Now</button>
+        </div>
+        <div class="chess-puzzle-section" style="margin: 2.5rem auto; max-width: 400px; text-align: center;">
+            <h2>Try a Chess Puzzle!</h2>
+            <iframe
+                src="https://lichess.org/training/frame?theme=auto&bg=auto"
+                style="width: 100%; min-width: 300px; height: 400px; border: none; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);"
+                allowtransparency="true"
+                allowfullscreen="true"
+                title="Lichess Chess Puzzle"
+            ></iframe>
+            <p style="font-size:0.95rem; color:#555; margin-top:0.5rem;">
+                Powered by <a href="https://lichess.org/" target="_blank" rel="noopener" style="color:#2563eb;">Lichess.org</a>
+            </p>
         </div>
     </main>
 </body>
